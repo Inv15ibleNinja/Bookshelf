@@ -29,27 +29,40 @@ func BindJsonParams(i io.Reader, s interface{}) error {
 	return json.Unmarshal(bytes, s)
 }
 
-func (c *GormController) Show1(id int64) revel.Result {
-	var book models.Book
-	//bookData, err := Dbm.Get(book, id)
-	bookData := c.DB.First(&book, id)
-	// if err != nil {
-	// 	panic(err)
-	// }
-	//return c.Response(&Response{OK, bookData})
+// func (c *GormController) Show1(id int64) revel.Result {
+// 	var book models.Book
+// 	//bookData, err := Dbm.Get(book, id)
+// 	bookData := c.DB.First(&book, id)
+// 	// if err != nil {
+// 	// 	panic(err)
+// 	// }
+// 	//return c.Response(&Response{OK, bookData})
+// 	return c.Render(bookData)
+// 	//return c.RenderJSON(bookData)
+// }
 
-	return c.Render(bookData)
-	//return c.RenderJSON(bookData)
-}
-func (c *GormController) Show(id int64) revel.Result {
+func (c *GormController) Show1(id int64) revel.Result {
 	//достаю из бд книжку с ID= id
 	var book models.Book
 	bookData := c.DB.First(&book, id)
 
 	//в переменную ololo записываю данные книжки
 	c.ViewArgs["data"] = bookData
-	c.ViewArgs["book"] = book.Title
+	c.ViewArgs["book"] = book
 
 	//рисую страницу, у которой есть параметр "ololo"
+	return c.Render()
+}
+
+func (c *GormController) Show() revel.Result {
+
+	//var Books interface{}
+	var bk []models.Book
+	_ = c.DB.Find(&bk)
+	//Books = resp.Value
+	// if resp != nil {
+
+	// }
+	c.ViewArgs["book"] = bk
 	return c.Render()
 }

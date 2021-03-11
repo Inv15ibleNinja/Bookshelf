@@ -12,7 +12,7 @@
             background-image: url('/css/searchicon.png');
             background-position: 10px 10px;
             background-repeat: no-repeat;
-            width: 100%;
+            width: 25%;
             font-size: 16px;
             padding: 12px 20px 12px 40px;
             border: 1px solid #ddd;
@@ -58,8 +58,8 @@
         </tr>
         <tr>
             <td>{{.book}}</td>
-            <td></td>
-            <td></td>
+            <td>1</td>
+            <td>2</td>
         </tr>
 
     </table>
@@ -84,6 +84,21 @@
 
             }
         }
+        // function addDataToTbody(nl, data) { // nl -> NodeList, data -> array with objects
+        //         data.forEach((d, i) => {
+        //             var tr = nl.insertRow(i);
+        //             Object.keys(d).forEach((k, j) => { // Keys from object represent th.innerHTML
+        //                 var cell = tr.insertCell(j);
+        //                 cell.innerHTML = d[k]; // Assign object values to cells   
+        //             });
+        //             nl.appendChild(tr);
+        //         })
+        //     }
+        //     var lakeTbody = document.querySelector("#myTable tbody");
+        //     for (var i = 0; i < 9; i++) {
+
+        //     }
+        //     addDataToTbody(lakeTbody,asd);
     </script>
 
 </body>
